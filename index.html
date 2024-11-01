@@ -7,6 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <title>Promotion</title>
 </head>
 
@@ -17,31 +18,15 @@
     <img src="https://developers-resource.landpress.line.me/fx/img/01_2_restaurant.png" alt="Promotion Image" class="w-full h-full object-cover">
 
     <!-- Share Button -->
-    <button onclick="shareWithFriends()" class="bg-pink-500 py-3 px-8 text-white rounded-lg mt-4 hover:bg-pink-600 transition-all duration-300">
+    <button id="buy" onclick="shareWithFriends()" class="bg-pink-500 py-3 px-8 text-white rounded-lg mt-4 hover:bg-pink-600 transition-all duration-300">
       แชร์ให้เพื่อน
     </button>
   </div>
 
   <script>
-    function shareWithFriends() {
-      // Your sharing logic here (e.g., integrating with LINE SDK)
-      Swal.fire({
-        icon: 'success',
-        title: 'แชร์โปรโมชั่นเรียบร้อยแล้ว!',
-        showConfirmButton: false,
-        timer: 1500
-      });
-    }
-  </script>
-</body>
-
-</html>
-
-
     async function main() {
-      const liffId = '1657155025-Qy3YLDvO'
+      const liffId = '1657155025-Qy3YLDvO';
       await liff.init({ liffId: liffId });
-
 
       if (!liff.isLoggedIn()) {
         const destinationUrl = window.location.href;
@@ -51,19 +36,15 @@
       liff.ready.then(() => {
         document.getElementById('pictureUrl').src = '' + liff.getDecodedIDToken().picture;
         document.getElementById('displayName').textContent = '' + liff.getDecodedIDToken().name;
-
-
-
-
       });
 
       const urlParams = new URLSearchParams(window.location.search);
-      const key = urlParams.get('type')
+      const key = urlParams.get('type');
       if (key == "shop") {
         const buy = document.getElementById("buy");
         buy.onclick = () => {
-          const url = urlParams.get("url")
-          const link = encodeURI("https://liff.line.me/" + liffId + "?type=shop&url=" + url)
+          const url = urlParams.get("url");
+          const link = encodeURI("https://liff.line.me/" + liffId + "?type=shop&url=" + url);
           const msg = [{
             "type": "flex",
             "altText": "Promotion",
@@ -122,7 +103,7 @@
                 ]
               }
             }
-          }]
+          }];
           liff.shareTargetPicker(msg).then((res) => {
             if (res) {
               Swal.fire({
@@ -132,30 +113,21 @@
                 showConfirmButton: false,
                 timer: 1500,
               }).then(() => {
-                window.location.replace(url)
-
+                window.location.replace(url);
               });
             } else {
               console.log("TargetPicker was closed!");
             }
-          })
-            .catch(function (error) {
-              window.alert("Failed to send message " + error);
-            });
-
+          }).catch(function (error) {
+            window.alert("Failed to send message " + error);
+          });
         }
       }
-
-
-
-
-
     }
 
     main();
 
-
-
+    // Confetti Animation
     let duration = 15 * 1000;
     let animationEnd = Date.now() + duration;
     let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
