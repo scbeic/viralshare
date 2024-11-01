@@ -1,95 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <link rel="stylesheet" href="https://bit.ly/fontiton5" type="text/css" charset="utf-8" />
-  <style type="text/css">
-    body {
-      font-family: 'line_seed_sans_th';
-    }
-
-    .text-neon {
-      color: #54a;
-      text-shadow: 0 0 0.5em #87F, 0 0 0.5em #87F, 0 0 0.5em #87F;
-    }
-  </style>
-  <title>New Promotion</title>
+  <title>Promotion</title>
 </head>
 
-<body>
-  <div class="bg-gradient-to-t from-red-500 to-pink-500 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-6 rounded-xl w-96 shadow">
+<body class="bg-gradient-to-t from-red-500 to-pink-500 flex items-center justify-center min-h-screen">
 
-      <img src="https://developers-resource.landpress.line.me/fx/img/01_2_restaurant.png"
-        class="rounded-xl h-30 w-full object-cover" alt="">
-      <div class="flex justify-center relative">
-        <img
-          src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjg5ajlhemdyZjlrZDgwdjMwbTl1dGdtbnhvM2p4Y2t0ZnpnZnE4ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l150Tal3EKqgj0v9gs/giphy.gif"
-          class="w-28 h-28 object-cover rounded-full border-4 border-white absolute -top-16" alt="" id="pictureUrl">
-      </div>
-      <h1 class="text-2xl mt-12 text-center font-semibold mb-1 flex justify-center items-center space-x-2">
-        <span class="text-neon" id="displayName">...</span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M21.5609 10.7386L20.2009 9.15859C19.9409 8.85859 19.7309 8.29859 19.7309 7.89859V6.19859C19.7309 5.13859 18.8609 4.26859 17.8009 4.26859H16.1009C15.7109 4.26859 15.1409 4.05859 14.8409 3.79859L13.2609 2.43859C12.5709 1.84859 11.4409 1.84859 10.7409 2.43859L9.17086 3.80859C8.87086 4.05859 8.30086 4.26859 7.91086 4.26859H6.18086C5.12086 4.26859 4.25086 5.13859 4.25086 6.19859V7.90859C4.25086 8.29859 4.04086 8.85859 3.79086 9.15859L2.44086 10.7486C1.86086 11.4386 1.86086 12.5586 2.44086 13.2486L3.79086 14.8386C4.04086 15.1386 4.25086 15.6986 4.25086 16.0886V17.7986C4.25086 18.8586 5.12086 19.7286 6.18086 19.7286H7.91086C8.30086 19.7286 8.87086 19.9386 9.17086 20.1986L10.7509 21.5586C11.4409 22.1486 12.5709 22.1486 13.2709 21.5586L14.8509 20.1986C15.1509 19.9386 15.7109 19.7286 16.1109 19.7286H17.8109C18.8709 19.7286 19.7409 18.8586 19.7409 17.7986V16.0986C19.7409 15.7086 19.9509 15.1386 20.2109 14.8386L21.5709 13.2586C22.1509 12.5686 22.1509 11.4286 21.5609 10.7386ZM16.1609 10.1086L11.3309 14.9386C11.1909 15.0786 11.0009 15.1586 10.8009 15.1586C10.6009 15.1586 10.4109 15.0786 10.2709 14.9386L7.85086 12.5186C7.56086 12.2286 7.56086 11.7486 7.85086 11.4586C8.14086 11.1686 8.62086 11.1686 8.91086 11.4586L10.8009 13.3486L15.1009 9.04859C15.3909 8.75859 15.8709 8.75859 16.1609 9.04859C16.4509 9.33859 16.4509 9.81859 16.1609 10.1086Z"
-            fill="#4E91F1" />
-        </svg>
-      </h1>
-      <div class="text-center text-xl text-gray-800 mb-4">
-        คุณได้รับโปรโมชั่น ในการซื้อสินค้าวันนี้
-      </div>
-      <div class="flex justify-center space-x-6 mb-4">
-        <div class="text-center">
-          <div class="text-sm">
-            ลดราคา
-          </div>
-          <div class="text-2xl text-green-500 font-semibold">
-            100
-          </div>
-          <div class="text-sm">
-            บาท
-          </div>
-        </div>
+  <!-- Full-screen Image -->
+  <div class="w-full h-full flex flex-col items-center justify-center">
+    <img src="https://developers-resource.landpress.line.me/fx/img/01_2_restaurant.png" alt="Promotion Image" class="w-full h-full object-cover">
 
-
-      </div>
-      <div class="text-center text-sm text-gray-400 mb-4">
-        แชร์โปรโมชั่นให้เพื่อนก่อนถึงเปิดดูเว็บไซต์เราได้!
-      </div>
-      <button id="buy"
-        class="bg-pink-500 w-full py-3 text-white rounded-lg relative mb-4 block hover:bg-pink-600 transition-all duration-300">
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-          stroke-width="1.5" stroke="currentColor" class="absolute left-2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
-        </svg>
-
-        แชร์ให้เพื่อน
-      </button>
-      
-
-      <div class="text-gray-700 mb-2 flex space-x-2 items-center">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M9.00016 10.6276C7.40266 10.6276 6.09766 9.33008 6.09766 7.72508C6.09766 6.12008 7.40266 4.83008 9.00016 4.83008C10.5977 4.83008 11.9027 6.12758 11.9027 7.73258C11.9027 9.33758 10.5977 10.6276 9.00016 10.6276ZM9.00016 5.95508C8.02516 5.95508 7.22266 6.75008 7.22266 7.73258C7.22266 8.71508 8.01766 9.51008 9.00016 9.51008C9.98266 9.51008 10.7777 8.71508 10.7777 7.73258C10.7777 6.75008 9.97516 5.95508 9.00016 5.95508Z"
-            fill="#292D32" />
-          <path
-            d="M8.99928 17.07C7.88928 17.07 6.77178 16.65 5.90178 15.8175C3.68928 13.6875 1.24428 10.29 2.16678 6.2475C2.99928 2.58 6.20178 0.9375 8.99928 0.9375C8.99928 0.9375 8.99928 0.9375 9.00678 0.9375C11.8043 0.9375 15.0068 2.58 15.8393 6.255C16.7543 10.2975 14.3093 13.6875 12.0968 15.8175C11.2268 16.65 10.1093 17.07 8.99928 17.07ZM8.99928 2.0625C6.81678 2.0625 4.01178 3.225 3.26928 6.495C2.45928 10.0275 4.67928 13.0725 6.68928 15C7.98678 16.2525 10.0193 16.2525 11.3168 15C13.3193 13.0725 15.5393 10.0275 14.7443 6.495C13.9943 3.225 11.1818 2.0625 8.99928 2.0625Z"
-            fill="#292D32" />
-        </svg>
-        <span>ร้านค้า : <span class="font-semibold">Sticker LINE by iton5</span></span>
-      </div>
-
-
-    </div>
+    <!-- Share Button -->
+    <button onclick="shareWithFriends()" class="bg-pink-500 py-3 px-8 text-white rounded-lg mt-4 hover:bg-pink-600 transition-all duration-300">
+      แชร์ให้เพื่อน
+    </button>
   </div>
+
   <script>
+    function shareWithFriends() {
+      // Your sharing logic here (e.g., integrating with LINE SDK)
+      Swal.fire({
+        icon: 'success',
+        title: 'แชร์โปรโมชั่นเรียบร้อยแล้ว!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  </script>
+</body>
+
+</html>
+
 
     async function main() {
       const liffId = '1657155025-Qy3YLDvO'
