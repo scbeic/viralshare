@@ -61,60 +61,80 @@
             "type": "flex",
             "altText": "คุณได้รับของขวัญ กดรับเลย",
             "contents": {
-              "type": "bubble",
-              "hero": {
-                "type": "image",
-                "url": "https://raw.githubusercontent.com/scbeic/sharetarget2/main/Viral-Share_EIC.jpg",
-                "size": "full",
-                "aspectRatio": "20:13",
-                "aspectMode": "cover",
-                "action": {
-                  "type": "uri",
-                  "uri": "https://line.me/"
-                }
-              },
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "md",
-                "action": {
-                  "type": "uri",
-                  "uri": "https://line.me/"
-                },
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Brown's Burger ลดราคา",
-                    "size": "xl",
-                    "weight": "bold"
-                  },
-                  {
-                    "type": "text",
-                    "text": "Sauce, Onions, Pickles, Lettuce & Cheese",
-                    "wrap": true,
-                    "color": "#aaaaaa",
-                    "size": "xxs"
-                  }
-                ]
-              },
-              "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "color": "#905c44",
-                    "margin": "xxl",
-                    "action": {
-                      "type": "uri",
-                      "label": "Click",
-                      "uri": link
-                    }
-                  }
-                ]
+  "type": "bubble",
+  "size": "giga",
+  "hero": {
+    "type": "image",
+    "url": "https://raw.githubusercontent.com/scbeic/sharetarget2/main/for%20add%20friend.jpg",
+    "size": "full",
+    "aspectRatio": "20:18",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "https://shorturl.asia/4M8oa"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "กิจกรรม \"ของดีบอกต่อ\" ",
+        "weight": "bold",
+        "size": "lg"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "ร่วมสนุกกับกิจกรรม \"ของดีบอกต่อ\" ลุ้นรับของขวัญสุดพิเศษจาก SCB EIC อาทิเช่น บัตรกำนัลสตาร์บัค, บทความจาก SCB EIC และสามารถส่งต่อให้เพื่อนเพื่อลุ้นไปด้วยกัน",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
               }
-            }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "primary",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "Add friend (สำหรับสมาชิกใหม่เท่านั้น)",
+          "uri": "https://shorturl.asia/4M8oa"
+        },
+        "color": "#4e2e79"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
           }];
           liff.shareTargetPicker(msg).then((res) => {
             if (res) {
