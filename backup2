@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <title>คุณได้รับของขวัญ กดรับเลย</title>
+  <style>
+    /* Make image cover the entire viewport */
+    .fullscreen-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col justify-end items-center min-h-screen">
+
+  <!-- Full-screen Image -->
+  <img src="https://raw.githubusercontent.com/scbeic/sharetarget2/main/viralshare-01.jpg" alt="คุณได้รับของขวัญ กดรับเลย Image" class="fullscreen-image">
+
+  <!-- Share Button -->
+  <div class="flex justify-center mb-8 w-full">
+    <button id="buy" onclick="shareWithFriends()" class="bg-green-500 text-white text-lg font-semibold py-4 px-12 rounded-lg hover:bg-green-600 transition-all duration-300">
+      แชร์ต่อให้เพื่อน
+    </button>
+  </div>
+
+  <script>
+    async function main() {
+      const liffId = '1657155025-m0rDEkjG';
+      await liff.init({ liffId: liffId });
+
+      if (!liff.isLoggedIn()) {
+        const destinationUrl = window.location.href;
+        liff.login({ redirectUri: destinationUrl });
+      }
+
+      liff.ready.then(() => {
+        document.getElementById('pictureUrl').src = '' + liff.getDecodedIDToken().picture;
+        document.getElementById('displayName').textContent = '' + liff.getDecodedIDToken().name;
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const key = urlParams.get('type');
+      if (key == "shop") {
+        const buy = document.getElementById("buy");
+        buy.onclick = () => {
+          const url = urlParams.get("url");
+          const link = encodeURI("https://liff.line.me/" + liffId + "?type=shop&url=" + url);
+          const msg = [{
+            "type": "flex",
+            "altText": "คุณได้รับของขวัญ กดรับเลย",
+            "contents": {
+              "type": "bubble",
+              "hero": {
+                "type": "image",
+                "url": "https://raw.githubusercontent.com/scbeic/sharetarget2/main/Viral-Share_EIC.jpg",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://line.me/"
+                }
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://line.me/"
+                },
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Brown's Burger ลดราคา",
+                    "size": "xl",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Sauce, Onions, Pickles, Lettuce & Cheese",
+                    "wrap": true,
+                    "color": "#aaaaaa",
+                    "size": "xxs"
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "margin": "xxl",
+                    "action": {
+                      "type": "uri",
+                      "label": "Click",
+                      "uri": link
+                    }
+                  }
+                ]
+              }
+            }
+          }];
+          liff.shareTargetPicker(msg).then((res) => {
+            if (res) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "ส่งเข้าแชทเรียบร้อย",
+                showConfirmButton: false,
+                timer: 1500,
+              }).then(() => {
+                window.location.replace(url);
+              });
+            } else {
+              console.log("TargetPicker was closed!");
+            }
+          }).catch(function (error) {
+            window.alert("Failed to send message " + error);
+          });
+        }
+      }
+    }
+
+    main();
+
+    // Confetti Animation
+    let duration = 15 * 1000;
+    let animationEnd = Date.now() + duration;
+    let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    let interval = setInterval(function () {
+      let timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      let particleCount = 50 * (timeLeft / duration);
+
+      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+    }, 250);
+  </script>
+</body>
+
+</html>
